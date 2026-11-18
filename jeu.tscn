@@ -19,6 +19,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Statut" type="Label" parent="VBoxContainer" unique_id=65502530]
+layout_mode = 2
+
 [node name="Texte" type="Label" parent="VBoxContainer" unique_id=1260456384]
 layout_mode = 2
 autowrap_mode = 2

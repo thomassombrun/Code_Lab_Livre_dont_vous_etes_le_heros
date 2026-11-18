@@ -1,5 +1,6 @@
 extends Control
 
+@onready var statut = $VBoxContainer/Statut
 @onready var texte = $VBoxContainer/Texte
 @onready var boite_choix = $VBoxContainer/Choix
 
@@ -14,23 +15,24 @@ var histoire = {
 		],
 	},
 	"sentier": {
-		"texte": "Le sentier mène à une cabane éclairée.",
+		"texte": "Le sentier mène à une cabane fermée à clé.",
 		"choix": [
-			{"libelle": "Frapper à la porte", "suite": "cabane"},
+			{"libelle": "Ouvrir la porte avec la clé", "suite": "cabane", "condition": "cle"},
 			{"libelle": "Revenir en arrière", "suite": "debut"},
 		],
 	},
 	"riviere": {
-		"texte": "L'eau est glacée et le courant fort.",
+		"texte": "L'eau glacée te coupe le souffle. Au bord, une clé rouillée brille.",
+		"pv": -3,
+		"objet": "cle",
 		"choix": [
-			{"libelle": "Traverser à la nage", "suite": "noyade"},
-			{"libelle": "Revenir en arrière", "suite": "debut"},
+			{"libelle": "Revenir au début", "suite": "debut"},
 		],
 	},
 	"arbre": {
 		"texte": "Il y as beaucoup de branche.",
 		"choix": [
-			{"libelle": "Casser des branches", "suite": "château"},
+			{"libelle": "Casser des branches", "suite": "chateau"},
 			{"libelle": "Redescendre de l'arbre", "suite": "debut"},
 		],
 	},
@@ -42,36 +44,61 @@ var histoire = {
 		"texte": "Le courant t'emporte... FIN (mauvaise)",
 		"choix": [],
 	},
-	"château": {
+	"chateau": {
 		"texte": "Un immense château se profile a l'horizon. FIN (a suivre)",
 		"choix": [],
-	}
+	}	
 }
-
 const DEPART = "debut"
+const PV_MAX = 10
+
 var passage = DEPART
+var pv = PV_MAX
+var inventaire = []
 
 func _ready():
-	afficher()
+	nouvelle_partie()
 
-func afficher():
-	var p = histoire[passage]
-	texte.text = p["texte"]
-	for bouton in boite_choix.get_children():
-		bouton.queue_free()
-	if p["choix"].is_empty():
-		ajouter_bouton("Rejouer", DEPART)
-		return
-	for c in p["choix"]:
-		ajouter_bouton(c["libelle"], c["suite"])
-	
-func ajouter_bouton(libelle, suite):
-	var bouton = Button.new()
-	bouton.text = libelle
-	bouton.pressed.connect(aller_a.bind(suite))
-	boite_choix.add_child(bouton)
-	
+func nouvelle_partie():
+	pv = PV_MAX
+	inventaire = []
+	aller_a(DEPART)
 
 func aller_a(suite):
 	passage = suite
+	appliquer_effets(histoire[passage])
 	afficher()
+
+func appliquer_effets(p):
+	if p.has("pv"):
+		pv += p["pv"]
+	if p.has("objet") and not inventaire.has(p["objet"]):
+		inventaire.append(p["objet"])
+	
+func afficher():
+	var p = histoire[passage]
+	statut.text = "PV : " + str(pv) + " / " + str(PV_MAX) + "   Inventaire : " + str(inventaire)
+	texte.text = p["texte"]
+	for bouton in boite_choix.get_children():
+		bouton.queue_free()
+
+	if pv <= 0:
+		texte.text += "\n\nTu n'as plus de forces... FIN (mauvaise)"
+		ajouter_bouton("Rejouer", nouvelle_partie)
+		return
+
+	if p["choix"].is_empty():
+		ajouter_bouton("Rejouer", nouvelle_partie)
+		return
+
+	for c in p["choix"]:
+		if c.has("condition") and not inventaire.has(c["condition"]):
+			continue
+		ajouter_bouton(c["libelle"], aller_a.bind(c["suite"]))
+	
+func ajouter_bouton(libelle, action):
+	var bouton = Button.new()
+	bouton.text = libelle
+	bouton.pressed.connect(action)
+	boite_choix.add_child(bouton)
+	
