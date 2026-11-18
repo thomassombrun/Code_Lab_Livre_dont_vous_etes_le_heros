@@ -10,20 +10,31 @@ const THEMES = {
 	"Horreur": "res://histoire_horreur.json",
 }
 
+const VITESSE_TEXTE = 40
 const DEPART = "debut"
 const PV_MAX = 10
 
+var animation_texte: Tween
 var histoire = {}
 var passage = DEPART
 var pv = PV_MAX
 var inventaire = []
 
+func animer_texte():
+	if animation_texte:
+		animation_texte.kill()
+	texte.visible_ratio = 0.0
+	var duree = texte.text.length() / float(VITESSE_TEXTE)
+	animation_texte = create_tween()
+	animation_texte.tween_property(texte, "visible_ratio", 1.0, duree)
+	
 func _ready():
 	afficher_menu()
 
 func afficher_menu():
 	statut.text = ""
 	texte.text = "Choisis ton aventure :"
+	animer_texte()
 	for bouton in boite_choix.get_children():
 		bouton.queue_free()
 	for nom in THEMES:
@@ -76,11 +87,13 @@ func afficher():
 	var p = histoire[passage]
 	statut.text = "PV : " + str(pv) + " / " + str(PV_MAX) + "   Inventaire : " + str(inventaire)
 	texte.text = p["texte"]
+	animer_texte()
 	for bouton in boite_choix.get_children():
 		bouton.queue_free()
 
 	if pv <= 0:
 		texte.text += "\n\nTu n'as plus de forces... FIN (mauvaise)"
+		animer_texte()
 		ajouter_bouton("Rejouer", nouvelle_partie)
 		ajouter_bouton("Changer de thème", afficher_menu)
 		return
