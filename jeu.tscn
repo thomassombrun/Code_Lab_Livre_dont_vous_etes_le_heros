@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bvebh4ht7nst5"]
+
+[ext_resource type="Script" uid="uid://bvs8e58unrmx0" path="res://jeu.gd" id="1_bc8hh"]
+
+[node name="Jeu" type="Control" unique_id=455573852]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bc8hh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=621554612]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Texte" type="Label" parent="VBoxContainer" unique_id=1260456384]
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="Choix1" type="Button" parent="VBoxContainer" unique_id=723611021]
+layout_mode = 2
+
+[node name="Choix2" type="Button" parent="VBoxContainer" unique_id=102007901]
+layout_mode = 2
