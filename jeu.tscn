@@ -28,3 +28,6 @@ layout_mode = 2
 
 [node name="Choix2" type="Button" parent="VBoxContainer" unique_id=102007901]
 layout_mode = 2
+
+[node name="Choix3" type="Button" parent="VBoxContainer" unique_id=2045339860]
+layout_mode = 2
