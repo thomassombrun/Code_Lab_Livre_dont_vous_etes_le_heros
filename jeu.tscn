@@ -23,11 +23,5 @@ grow_vertical = 2
 layout_mode = 2
 autowrap_mode = 2
 
-[node name="Choix1" type="Button" parent="VBoxContainer" unique_id=723611021]
-layout_mode = 2
-
-[node name="Choix2" type="Button" parent="VBoxContainer" unique_id=102007901]
-layout_mode = 2
-
-[node name="Choix3" type="Button" parent="VBoxContainer" unique_id=2045339860]
+[node name="Choix" type="VBoxContainer" parent="VBoxContainer" unique_id=1589912952]
 layout_mode = 2

@@ -1,9 +1,7 @@
 extends Control
 
 @onready var texte = $VBoxContainer/Texte
-@onready var choix1 = $VBoxContainer/Choix1
-@onready var choix2 = $VBoxContainer/Choix2
-@onready var choix3 = $VBoxContainer/Choix3
+@onready var boite_choix = $VBoxContainer/Choix
 
 # L'HISTOIRE : uniquement des données, aucune logique
 var histoire = {
@@ -50,25 +48,30 @@ var histoire = {
 	}
 }
 
-var passage = "debut"
+const DEPART = "debut"
+var passage = DEPART
 
 func _ready():
-	choix1.pressed.connect(_on_choix.bind(0))
-	choix2.pressed.connect(_on_choix.bind(1))
-	choix3.pressed.connect(_on_choix.bind(2))
 	afficher()
 
 func afficher():
 	var p = histoire[passage]
 	texte.text = p["texte"]
-	var boutons = [choix1, choix2, choix3]
-	for i in boutons.size():
-		if i < p["choix"].size():
-			boutons[i].text = p["choix"][i]["libelle"]
-			boutons[i].visible = true
-		else:
-			boutons[i].visible = false
+	for bouton in boite_choix.get_children():
+		bouton.queue_free()
+	if p["choix"].is_empty():
+		ajouter_bouton("Rejouer", DEPART)
+		return
+	for c in p["choix"]:
+		ajouter_bouton(c["libelle"], c["suite"])
+	
+func ajouter_bouton(libelle, suite):
+	var bouton = Button.new()
+	bouton.text = libelle
+	bouton.pressed.connect(aller_a.bind(suite))
+	boite_choix.add_child(bouton)
+	
 
-func _on_choix(index):
-	passage = histoire[passage]["choix"][index]["suite"]
+func aller_a(suite):
+	passage = suite
 	afficher()
