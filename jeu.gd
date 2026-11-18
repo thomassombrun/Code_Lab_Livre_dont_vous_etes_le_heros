@@ -4,60 +4,41 @@ extends Control
 @onready var texte = $VBoxContainer/Texte
 @onready var boite_choix = $VBoxContainer/Choix
 
-# L'HISTOIRE : uniquement des données, aucune logique
-var histoire = {
-	"debut": {
-		"texte": "Tu te réveilles dans une forêt sombre. Un sentier part vers le nord, une rivière coule à l'est.",
-		"choix": [
-			{"libelle": "Suivre le sentier", "suite": "sentier"},
-			{"libelle": "Aller vers la rivière", "suite": "riviere"},
-			{"libelle": "Grimper à un arbre", "suite": "arbre"},
-		],
-	},
-	"sentier": {
-		"texte": "Le sentier mène à une cabane fermée à clé.",
-		"choix": [
-			{"libelle": "Ouvrir la porte avec la clé", "suite": "cabane", "condition": "cle"},
-			{"libelle": "Revenir en arrière", "suite": "debut"},
-		],
-	},
-	"riviere": {
-		"texte": "L'eau glacée te coupe le souffle. Au bord, une clé rouillée brille.",
-		"pv": -3,
-		"objet": "cle",
-		"choix": [
-			{"libelle": "Revenir au début", "suite": "debut"},
-		],
-	},
-	"arbre": {
-		"texte": "Il y as beaucoup de branche.",
-		"choix": [
-			{"libelle": "Casser des branches", "suite": "chateau"},
-			{"libelle": "Redescendre de l'arbre", "suite": "debut"},
-		],
-	},
-	"cabane": {
-		"texte": "Une vieille dame t'accueille au chaud. FIN (bonne)",
-		"choix": [],
-	},
-	"noyade": {
-		"texte": "Le courant t'emporte... FIN (mauvaise)",
-		"choix": [],
-	},
-	"chateau": {
-		"texte": "Un immense château se profile a l'horizon. FIN (a suivre)",
-		"choix": [],
-	}	
-}
+const FICHIER_HISTOIRE = "res://histoire.json"
 const DEPART = "debut"
 const PV_MAX = 10
 
+var histoire = {}
 var passage = DEPART
 var pv = PV_MAX
 var inventaire = []
 
 func _ready():
+	histoire = charger_histoire(FICHIER_HISTOIRE)
+	if histoire.is_empty():
+		texte.text = "Erreur : impossible de charger l'histoire."
+		return
+	verifier_histoire()
 	nouvelle_partie()
+
+func charger_histoire(chemin):
+	var fichier = FileAccess.open(chemin, FileAccess.READ)
+	if fichier == null:
+		push_error("Fichier introuvable : " + chemin)
+		return {}
+	var donnees = JSON.parse_string(fichier.get_as_text())
+	if donnees == null:
+		push_error("JSON invalide dans " + chemin)
+		return {}
+	return donnees
+
+func verifier_histoire():
+	if not histoire.has(DEPART):
+		push_error("Passage de départ manquant : " + DEPART)
+	for id in histoire:
+		for c in histoire[id]["choix"]:
+			if not histoire.has(c["suite"]):
+				push_error("Lien cassé : '" + id + "' mène à '" + c["suite"] + "' qui n'existe pas")
 
 func nouvelle_partie():
 	pv = PV_MAX
@@ -71,7 +52,7 @@ func aller_a(suite):
 
 func appliquer_effets(p):
 	if p.has("pv"):
-		pv += p["pv"]
+		pv += int(p["pv"])
 	if p.has("objet") and not inventaire.has(p["objet"]):
 		inventaire.append(p["objet"])
 	

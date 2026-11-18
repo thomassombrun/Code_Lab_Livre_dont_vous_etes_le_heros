@@ -1,0 +1,35 @@
+{
+	"debut": {
+		"texte": "Tu te réveilles dans une forêt sombre. Un sentier part vers le nord, une rivière coule à l'est.",
+		"choix": [
+			{"libelle": "Suivre le sentier", "suite": "sentier"},
+			{"libelle": "Aller vers la rivière", "suite": "riviere"},
+			{"libelle": "Grimper à un arbre", "suite": "arbre"}
+		]
+	},
+	"sentier": {
+		"texte": "Le sentier mène à une cabane fermée à clé.",
+		"choix": [
+			{"libelle": "Ouvrir la porte avec la clé", "suite": "cabane", "condition": "cle"},
+			{"libelle": "Revenir en arrière", "suite": "debut"}
+		]
+	},
+	"riviere": {
+		"texte": "L'eau glacée te coupe le souffle. Au bord, une clé rouillée brille.",
+		"pv": -3,
+		"objet": "cle",
+		"choix": [
+			{"libelle": "Revenir au début", "suite": "debut"}
+		]
+	},
+	"arbre": {
+		"texte": "Il y a beaucoup de branches.",
+		"choix": [
+			{"libelle": "Casser des branches", "suite": "chateau"},
+			{"libelle": "Redescendre de l'arbre", "suite": "debut"}
+		]
+	},
+	"cabane": {"texte": "Une vieille dame t'accueille au chaud. FIN (bonne)", "choix": []},
+	"noyade": {"texte": "Le courant t'emporte... FIN (mauvaise)", "choix": []},
+	"chateau": {"texte": "Un immense château se profile à l'horizon. FIN (à suivre)", "choix": []}
+}
