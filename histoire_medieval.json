@@ -1,0 +1,546 @@
+{
+  "debut": {
+    "texte": "Le village de Brumeval fume encore. Cette nuit, le sorcier Malvorn a volé la Pierre d'Aube, le joyau qui protégeait la vallée des ténèbres. Sire Aldric, le vieux chevalier dont tu es l'écuyer, agonise dans tes bras.\n\n« Va à la Tour Noire, petit... Rapporte la Pierre avant la prochaine pleine lune, ou la vallée mourra. »\n\nIl ferme les yeux. Tu es seul, désormais.",
+    "choix": [
+      {
+        "libelle": "Passer à la forge avant de partir",
+        "suite": "forge"
+      },
+      {
+        "libelle": "Aller à la taverne chercher des renseignements",
+        "suite": "taverne"
+      },
+      {
+        "libelle": "Partir immédiatement sur la grand-route",
+        "suite": "carrefour"
+      }
+    ]
+  },
+  "forge": {
+    "texte": "Brunehaut, la forgeronne, essuie ses mains noires de suie. Elle te tend une épée encore tiède.\n\n« C'était la commande de Sire Aldric. Elle est à toi maintenant. Fais-en bon usage. »\n\nTu obtiens une ÉPÉE.",
+    "objet": "epee",
+    "choix": [
+      {
+        "libelle": "Aller ensuite à la taverne",
+        "suite": "taverne"
+      },
+      {
+        "libelle": "Prendre la grand-route",
+        "suite": "carrefour"
+      }
+    ]
+  },
+  "taverne": {
+    "texte": "La taverne du Sanglier Borgne est pleine de réfugiés. Près du feu, un vieux barde accorde son luth. Au fond, un mercenaire balafré lance des dés et te fixe avec un sourire édenté.",
+    "choix": [
+      {
+        "libelle": "Écouter le vieux barde",
+        "suite": "barde"
+      },
+      {
+        "libelle": "Jouer aux dés avec le mercenaire",
+        "suite": "des_mercenaire"
+      },
+      {
+        "libelle": "Quitter la taverne et prendre la route",
+        "suite": "carrefour"
+      }
+    ]
+  },
+  "barde": {
+    "texte": "Le barde chante la légende de la Tour Noire : « Trois chemins y mènent, la forêt, le marais et la montagne. Dans la forêt vit une ermite qui connaît les secrets du sorcier. Et sous la tour dort une porte oubliée que seule une clé de bronze peut ouvrir. »\n\nIl te fait un clin d'œil. Tu sens tes forces revenir.",
+    "pv": 1,
+    "choix": [
+      {
+        "libelle": "Retourner voir le mercenaire",
+        "suite": "des_mercenaire"
+      },
+      {
+        "libelle": "Prendre la route",
+        "suite": "carrefour"
+      }
+    ]
+  },
+  "des_mercenaire": {
+    "texte": "« Une partie, gamin ? Si tu gagnes, je te donne ce qui est dans ma bourse. Si tu perds... tu payes la tournée. »\n\nTu remarques qu'il cache un dé dans sa manche.",
+    "choix": [
+      {
+        "libelle": "Tricher toi aussi",
+        "suite": "bagarre"
+      },
+      {
+        "libelle": "Jouer honnêtement et dénoncer son dé caché",
+        "suite": "des_honnete"
+      }
+    ]
+  },
+  "bagarre": {
+    "texte": "Il te voit glisser le dé. Son poing s'abat sur ton visage et tu traverses une table. Le tavernier te jette dehors, le nez en sang.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Reprendre la route, honteux",
+        "suite": "carrefour"
+      }
+    ]
+  },
+  "des_honnete": {
+    "texte": "Tu poses la main sur sa manche et révèles le dé truqué. La salle éclate de rire. Au lieu de se fâcher, le mercenaire hausse les épaules.\n\n« T'as du cran. Tiens, j'ai volé ça à un garde de la Tour Noire. Moi, je n'y mettrai jamais les pieds. »\n\nTu obtiens une CLÉ DE BRONZE.",
+    "objet": "cle_bronze",
+    "choix": [
+      {
+        "libelle": "Prendre la route",
+        "suite": "carrefour"
+      }
+    ]
+  },
+  "carrefour": {
+    "texte": "Au carrefour des Trois Pierres, un panneau vermoulu indique trois directions. La Tour Noire se dresse au loin, pointe sombre contre le ciel gris.",
+    "choix": [
+      {
+        "libelle": "Traverser la forêt de Sombrebois",
+        "suite": "foret"
+      },
+      {
+        "libelle": "Longer le marais des Saules",
+        "suite": "marais"
+      },
+      {
+        "libelle": "Gravir la route de la montagne",
+        "suite": "montagne"
+      }
+    ]
+  },
+  "foret": {
+    "texte": "Les arbres de Sombrebois sont si serrés que la lumière ne passe presque plus. Soudain, des yeux jaunes brillent entre les troncs. Une meute de loups t'encercle en grognant.",
+    "choix": [
+      {
+        "libelle": "Dégainer ton épée et combattre",
+        "suite": "loups_vaincus",
+        "condition": "epee"
+      },
+      {
+        "libelle": "Grimper dans un chêne",
+        "suite": "arbre_refuge"
+      },
+      {
+        "libelle": "Fuir à toutes jambes",
+        "suite": "loups_fuite"
+      }
+    ]
+  },
+  "loups_vaincus": {
+    "texte": "Tu fais tournoyer ta lame. Le chef de meute recule, blessé, et les autres le suivent. Une morsure à la jambe te brûle, mais tu es vivant.",
+    "pv": -1,
+    "choix": [
+      {
+        "libelle": "Continuer plus loin dans la forêt",
+        "suite": "ermite"
+      }
+    ]
+  },
+  "arbre_refuge": {
+    "texte": "Tu passes la nuit perché sur une branche, transi de froid, pendant que les loups tournent en rond en bas. À l'aube, ils abandonnent. Tu redescends, les doigts gelés.",
+    "pv": -1,
+    "choix": [
+      {
+        "libelle": "Reprendre la marche",
+        "suite": "ermite"
+      }
+    ]
+  },
+  "loups_fuite": {
+    "texte": "Tu cours entre les ronces. Un loup te rattrape et plante ses crocs dans ton bras avant que tu ne dévales une pente. Tu roules jusqu'au fond d'un ravin. Les loups ne te suivent pas.",
+    "pv": -4,
+    "choix": [
+      {
+        "libelle": "Te relever et marcher vers une fumée au loin",
+        "suite": "ermite"
+      }
+    ]
+  },
+  "ermite": {
+    "texte": "Dans une clairière, une cabane de mousse fume doucement. Une vieille femme aux yeux blancs t'attend sur le seuil.\n\n« Je sais où tu vas. Réponds à mon énigme et je t'aiderai : Plus je grandis, moins on me voit. Je fuis la lumière mais je la suis partout. Qui suis-je ? »",
+    "choix": [
+      {
+        "libelle": "Répondre : « L'ombre »",
+        "suite": "amulette_obtenue"
+      },
+      {
+        "libelle": "Répondre : « Le vent »",
+        "suite": "ermite_colere"
+      },
+      {
+        "libelle": "Refuser de jouer et repartir",
+        "suite": "pont"
+      }
+    ]
+  },
+  "amulette_obtenue": {
+    "texte": "L'ermite sourit. « Bien. Malvorn craint son propre reflet. Prends ceci. » Elle passe à ton cou une amulette d'argent poli comme un miroir, puis soigne tes blessures avec un baume d'herbes.\n\nTu obtiens une AMULETTE MIROIR.",
+    "pv": 3,
+    "objet": "amulette",
+    "choix": [
+      {
+        "libelle": "La remercier et reprendre la route",
+        "suite": "pont"
+      }
+    ]
+  },
+  "ermite_colere": {
+    "texte": "« Le vent ? » L'ermite claque des doigts. Une ronce jaillit du sol et te fouette les jambes. « Va-t'en, sot. »",
+    "pv": -2,
+    "choix": [
+      {
+        "libelle": "Partir en boitant",
+        "suite": "pont"
+      }
+    ]
+  },
+  "marais": {
+    "texte": "Le marais des Saules sent la vase et la pourriture. Le brouillard est épais. Une petite lumière bleue danse au-dessus de l'eau, comme si elle t'invitait à la suivre.",
+    "choix": [
+      {
+        "libelle": "Suivre la lumière bleue",
+        "suite": "noyade_marais"
+      },
+      {
+        "libelle": "Ignorer la lumière et suivre les planches de bois",
+        "suite": "marais_cabane"
+      }
+    ]
+  },
+  "noyade_marais": {
+    "texte": "La lumière recule à chaque pas. Soudain, le sol disparaît sous tes pieds. La vase t'aspire, glacée, et la lumière s'éteint en riant.\n\nLe marais garde toujours ceux qui suivent les feux follets.\n\nFIN : englouti par le marais.",
+    "choix": []
+  },
+  "marais_cabane": {
+    "texte": "Les planches mènent à la cabane d'un pêcheur. Le vieil homme te sert une soupe chaude.\n\n« La Tour Noire ? Alors prends ça. Il fait plus noir sous cette tour qu'au fond d'un puits. »\n\nTu obtiens une TORCHE.",
+    "pv": 2,
+    "objet": "torche",
+    "choix": [
+      {
+        "libelle": "Continuer vers la tour",
+        "suite": "pont"
+      }
+    ]
+  },
+  "montagne": {
+    "texte": "La route de la montagne serpente au-dessus du vide. Au sommet du col, un pont de pierre est gardé par un troll énorme qui mâchonne un os.\n\n« Péage ! Ou ton épée, ou ta cervelle ! Réponds bien, ou je te mange. »",
+    "choix": [
+      {
+        "libelle": "Combattre le troll",
+        "suite": "troll_combat",
+        "condition": "epee"
+      },
+      {
+        "libelle": "Lui proposer un concours d'énigmes",
+        "suite": "troll_enigme"
+      },
+      {
+        "libelle": "Faire demi-tour jusqu'au carrefour",
+        "suite": "carrefour"
+      }
+    ]
+  },
+  "troll_combat": {
+    "texte": "Le troll frappe avec sa massue et te projette contre la roche. Tu te relèves et plantes ton épée dans son pied. Il hurle, sautille et tombe dans le ravin.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Traverser le pont",
+        "suite": "tour_abords"
+      }
+    ]
+  },
+  "troll_enigme": {
+    "texte": "Tu lui demandes : « Qu'est-ce qui a des dents mais ne mord jamais ? » Le troll se gratte la tête pendant une heure entière. « Un... un caillou ? » « Un peigne ! » Furieux d'avoir perdu, il s'assoit et boude. Tu passes tranquillement.",
+    "choix": [
+      {
+        "libelle": "Traverser le pont",
+        "suite": "tour_abords"
+      }
+    ]
+  },
+  "pont": {
+    "texte": "Tu arrives au vieux pont suspendu qui enjambe le gouffre devant la Tour Noire. Les cordes sont effilochées et plusieurs planches manquent.",
+    "choix": [
+      {
+        "libelle": "Traverser lentement, planche par planche",
+        "suite": "tour_abords"
+      },
+      {
+        "libelle": "Courir pour traverser au plus vite",
+        "suite": "pont_chute"
+      }
+    ]
+  },
+  "pont_chute": {
+    "texte": "Une planche cède sous ton pied. Tu t'agrippes à une corde et restes suspendu au-dessus du vide. À la force des bras, tu te hisses de l'autre côté, les mains en sang.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Reprendre ton souffle et avancer",
+        "suite": "tour_abords"
+      }
+    ]
+  },
+  "tour_abords": {
+    "texte": "La Tour Noire est faite d'une pierre qui semble boire la lumière. Devant toi, une grande porte gardée par deux squelettes en armure. Sur le côté, une petite porte de bronze à demi cachée par le lierre. Le mur, lui, est couvert de fissures.",
+    "choix": [
+      {
+        "libelle": "Approcher de la grande porte",
+        "suite": "grande_porte"
+      },
+      {
+        "libelle": "Ouvrir la petite porte de bronze avec ta clé",
+        "suite": "poterne",
+        "condition": "cle_bronze"
+      },
+      {
+        "libelle": "Escalader le mur fissuré",
+        "suite": "escalade"
+      }
+    ]
+  },
+  "grande_porte": {
+    "texte": "Les squelettes tournent la tête vers toi dans un grincement d'os. Leurs orbites s'allument de flammes rouges et ils lèvent leurs hallebardes.",
+    "choix": [
+      {
+        "libelle": "Combattre les gardes avec ton épée",
+        "suite": "combat_gardes",
+        "condition": "epee"
+      },
+      {
+        "libelle": "Foncer sur eux à mains nues",
+        "suite": "mort_gardes"
+      },
+      {
+        "libelle": "Reculer et chercher une autre entrée",
+        "suite": "tour_abords"
+      }
+    ]
+  },
+  "combat_gardes": {
+    "texte": "Le combat est terrible. Une hallebarde t'entaille l'épaule, mais ton épée brise les deux crânes l'un après l'autre. Les os s'effondrent en tas. La grande porte s'ouvre toute seule.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Entrer dans la tour",
+        "suite": "hall"
+      }
+    ]
+  },
+  "mort_gardes": {
+    "texte": "Tu te jettes sur le premier squelette. Le second te transperce d'un coup de hallebarde. Tu tombes à genoux devant la porte de la tour, si près du but.\n\nFIN : tombé devant la Tour Noire.",
+    "choix": []
+  },
+  "escalade": {
+    "texte": "Tu escalades la paroi en t'aidant des fissures. Le vent hurle et une pierre se détache sous ta main. Tu glisses, te rattrapes de justesse, puis atteins une fenêtre ouverte.",
+    "pv": -2,
+    "choix": [
+      {
+        "libelle": "Te glisser par la fenêtre",
+        "suite": "bibliotheque"
+      }
+    ]
+  },
+  "poterne": {
+    "texte": "La clé de bronze tourne avec un déclic. La petite porte s'ouvre sur un escalier qui descend sous la tour. Au bout de quelques marches, l'obscurité est totale.",
+    "choix": [
+      {
+        "libelle": "Allumer ta torche",
+        "suite": "crypte",
+        "condition": "torche"
+      },
+      {
+        "libelle": "Avancer à tâtons dans le noir",
+        "suite": "souterrain_noir"
+      }
+    ]
+  },
+  "souterrain_noir": {
+    "texte": "Tu avances à l'aveugle. Ton pied heurte une dalle piégée et des pointes jaillissent du mur. L'une d'elles t'érafle le flanc. Tu finis par voir une faible lueur verte au loin.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Te diriger vers la lueur",
+        "suite": "crypte"
+      }
+    ]
+  },
+  "crypte": {
+    "texte": "Tu arrives dans une crypte. Dans une cage de fer, un vieil homme en robe déchirée lève la tête.\n\n« Je suis Orbin, l'ancien maître de Malvorn. Il m'a enfermé ici. Libère-moi et je te donnerai l'arme qui peut le vaincre. »",
+    "choix": [
+      {
+        "libelle": "Briser le cadenas et le libérer",
+        "suite": "parchemin_orbin"
+      },
+      {
+        "libelle": "Te méfier de lui et chercher la sortie seul",
+        "suite": "hall"
+      }
+    ]
+  },
+  "parchemin_orbin": {
+    "texte": "Tu brises le cadenas rouillé. Orbin sort en titubant et te tend un rouleau scellé.\n\n« Ce sort brise le bouclier de Malvorn. Lis-le à voix haute devant lui. Moi, je suis trop faible pour monter. » Il pose la main sur ton front et une chaleur douce t'envahit.\n\nTu obtiens un PARCHEMIN DE BRISURE.",
+    "pv": 2,
+    "objet": "parchemin",
+    "choix": [
+      {
+        "libelle": "Monter l'escalier secret jusqu'au sommet",
+        "suite": "sommet"
+      }
+    ]
+  },
+  "hall": {
+    "texte": "Tu te trouves dans un immense hall aux statues de chevaliers pétrifiés. Leurs visages expriment la terreur. Un grand escalier monte vers le sommet. Une porte entrouverte laisse voir des rayonnages de livres.",
+    "choix": [
+      {
+        "libelle": "Monter directement au sommet",
+        "suite": "sommet"
+      },
+      {
+        "libelle": "Explorer la bibliothèque",
+        "suite": "bibliotheque"
+      }
+    ]
+  },
+  "bibliotheque": {
+    "texte": "La bibliothèque du sorcier sent la poussière et le soufre. Sur un pupitre, un gros livre noir est ouvert et murmure ton nom. À côté, un parchemin roulé porte l'inscription : « Contre-sort ».",
+    "choix": [
+      {
+        "libelle": "Lire le livre noir",
+        "suite": "livre_maudit"
+      },
+      {
+        "libelle": "Prendre le parchemin",
+        "suite": "parchemin_trouve"
+      },
+      {
+        "libelle": "Ne rien toucher et monter au sommet",
+        "suite": "sommet"
+      }
+    ]
+  },
+  "livre_maudit": {
+    "texte": "Les mots du livre rampent hors des pages et s'enroulent autour de ton bras comme des serpents d'encre. Tu arraches ta manche et les jettes au feu, mais ta peau est brûlée.",
+    "pv": -4,
+    "choix": [
+      {
+        "libelle": "Prendre quand même le parchemin",
+        "suite": "parchemin_trouve"
+      },
+      {
+        "libelle": "Monter au sommet",
+        "suite": "sommet"
+      }
+    ]
+  },
+  "parchemin_trouve": {
+    "texte": "Tu déroules le parchemin. C'est un sort ancien, écrit dans une langue que tu comprends étrangement. « Lu devant le sorcier, il brisera son bouclier. »\n\nTu obtiens un PARCHEMIN DE BRISURE.",
+    "objet": "parchemin",
+    "choix": [
+      {
+        "libelle": "Monter au sommet",
+        "suite": "sommet"
+      }
+    ]
+  },
+  "sommet": {
+    "texte": "Au sommet de la tour, Malvorn se tient devant un autel où brille la Pierre d'Aube. Un bouclier de lumière violette tourne autour de lui.\n\n« Un écuyer ? Aldric m'envoie un enfant ? Approche donc, que je te transforme en statue comme les autres. »",
+    "choix": [
+      {
+        "libelle": "L'attaquer avec ton épée",
+        "suite": "duel",
+        "condition": "epee"
+      },
+      {
+        "libelle": "Lire le parchemin à voix haute",
+        "suite": "sort_brise",
+        "condition": "parchemin"
+      },
+      {
+        "libelle": "Brandir l'amulette miroir",
+        "suite": "amulette_protege",
+        "condition": "amulette"
+      },
+      {
+        "libelle": "Essayer de négocier",
+        "suite": "negociation"
+      }
+    ]
+  },
+  "duel": {
+    "texte": "Ton épée rebondit sur le bouclier. Malvorn ricane et lance un éclair qui te projette contre un pilier. Mais tu vois une faille : le bouclier faiblit chaque fois qu'il lance un sort.",
+    "pv": -4,
+    "choix": [
+      {
+        "libelle": "Attendre son prochain sort et frapper dans la faille",
+        "suite": "victoire_epee"
+      },
+      {
+        "libelle": "T'enfuir par l'escalier",
+        "suite": "fuite_tour"
+      }
+    ]
+  },
+  "victoire_epee": {
+    "texte": "Malvorn lève la main pour un nouvel éclair. Le bouclier vacille. Tu bondis et ta lame traverse la lumière. Le sorcier pousse un cri et se dissout en fumée noire.\n\nTu prends la Pierre d'Aube. Elle est chaude, comme un cœur qui bat. Quand tu reviens à Brumeval, couvert de blessures, le village entier t'acclame. La reine te fait chevalier sur la place du village.\n\nFIN : Chevalier de Brumeval. Victoire par l'épée !",
+    "choix": []
+  },
+  "sort_brise": {
+    "texte": "Tu lis les mots anciens. Ta voix résonne comme celle d'un géant. Le bouclier de Malvorn se fissure puis vole en éclats. Privé de sa magie, le sorcier n'est plus qu'un vieil homme tremblant. Les statues du hall reprennent vie et les chevaliers libérés l'enchaînent.\n\nTu rapportes la Pierre d'Aube à Brumeval, escorté par vingt chevaliers ressuscités. Aucune goutte de sang n'a coulé.\n\nFIN : Le Sage de la Vallée. La meilleure fin !",
+    "choix": []
+  },
+  "amulette_protege": {
+    "texte": "Malvorn lance son sort de pétrification. Tu lèves l'amulette. Le rayon frappe le miroir d'argent et repart vers lui. Le sorcier regarde, horrifié, ses mains se changer en pierre, puis tout son corps.\n\nUne statue de plus orne désormais la Tour Noire. Tu repars avec la Pierre d'Aube, et l'ermite t'attend à l'orée du bois avec un sourire entendu.\n\nFIN : Le Miroir de l'Ermite. Victoire par la ruse !",
+    "choix": []
+  },
+  "negociation": {
+    "texte": "« Négocier ? » Malvorn semble amusé. « Soit. Je t'offre ce qu'Aldric ne t'a jamais donné : le pouvoir. Sers-moi, et tu régneras sur la vallée à mes côtés. »",
+    "choix": [
+      {
+        "libelle": "Accepter son offre",
+        "suite": "fin_traitre"
+      },
+      {
+        "libelle": "Refuser fièrement",
+        "suite": "malediction"
+      }
+    ]
+  },
+  "fin_traitre": {
+    "texte": "Tu poses un genou à terre. Malvorn pose la main sur ta tête et tu sens ton cœur se glacer. Les années passent. On parle de toi dans la vallée comme du Chevalier Noir, le bras droit du sorcier. Plus personne ne se souvient de l'écuyer de Brumeval.\n\nFIN : Le Chevalier Noir. Tu as trahi ta promesse.",
+    "choix": []
+  },
+  "malediction": {
+    "texte": "« Dommage. » Une vague de magie noire te frappe en pleine poitrine. Tu as l'impression que tes os gèlent. Tu tiens encore debout, mais à peine.",
+    "pv": -5,
+    "choix": [
+      {
+        "libelle": "L'attaquer avec ton épée",
+        "suite": "duel",
+        "condition": "epee"
+      },
+      {
+        "libelle": "Lire le parchemin à voix haute",
+        "suite": "sort_brise",
+        "condition": "parchemin"
+      },
+      {
+        "libelle": "Brandir l'amulette miroir",
+        "suite": "amulette_protege",
+        "condition": "amulette"
+      },
+      {
+        "libelle": "T'enfuir par l'escalier",
+        "suite": "fuite_tour"
+      }
+    ]
+  },
+  "fuite_tour": {
+    "texte": "Tu dévales l'escalier et t'échappes de la tour. Tu as survécu, mais la Pierre d'Aube est restée là-haut. Quand la pleine lune se lève, les ténèbres recouvrent la vallée. Tu guides les survivants de Brumeval vers les terres du sud, en jurant de revenir un jour.\n\nFIN : L'Exil. Tu es vivant, mais la vallée est perdue.",
+    "choix": []
+  }
+}

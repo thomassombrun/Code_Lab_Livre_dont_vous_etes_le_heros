@@ -1,0 +1,509 @@
+{
+  "debut": {
+    "texte": "Néo-Lutèce, 2189. La pluie acide tambourine sur la vitre de ta capsule-hôtel. Ton implant rétinien clignote : un message de Mira, ta fixeuse.\n\n« Job urgent. La corpo Helix cache un dossier appelé PROJET LAZARE dans sa tour. Un client paie très cher pour une copie. On dit que des gens des bas quartiers disparaissent à cause de ce projet. »\n\nTu enfiles ton manteau. Il est presque minuit.",
+    "choix": [
+      {
+        "libelle": "Rejoindre Mira au bar Le Néon Bleu",
+        "suite": "bar_neon"
+      },
+      {
+        "libelle": "Faire un tour au marché noir",
+        "suite": "marche_noir"
+      },
+      {
+        "libelle": "Foncer directement vers la tour Helix",
+        "suite": "ruelle"
+      }
+    ]
+  },
+  "bar_neon": {
+    "texte": "Le Néon Bleu vibre de musique synthétique. Mira, crâne rasé et bras chromé, pose deux objets sur la table.\n\n« Je ne peux t'en donner qu'un. Un badge cloné d'employé Helix, ou mon petit drone espion. À toi de voir. »",
+    "choix": [
+      {
+        "libelle": "Prendre le badge cloné",
+        "suite": "badge_pris"
+      },
+      {
+        "libelle": "Prendre le drone espion",
+        "suite": "drone_pris"
+      }
+    ]
+  },
+  "badge_pris": {
+    "texte": "Tu glisses le badge dans ta poche. Il porte la photo d'un certain « Paul Ferrand, technicien niveau 3 ». Avec un peu de chance, les portes de Helix te prendront pour lui.\n\nTu obtiens un BADGE HELIX.",
+    "objet": "badge",
+    "choix": [
+      {
+        "libelle": "Aller au marché noir avant la mission",
+        "suite": "marche_noir"
+      },
+      {
+        "libelle": "Partir vers la tour",
+        "suite": "ruelle"
+      }
+    ]
+  },
+  "drone_pris": {
+    "texte": "Le drone, pas plus gros qu'un moineau, se pose sur ton épaule et ronronne. « Il s'appelle Pixel. Il peut ouvrir une trappe de toit et voler plus vite qu'un aérotaxi. »\n\nTu obtiens un DRONE.",
+    "objet": "drone",
+    "choix": [
+      {
+        "libelle": "Aller au marché noir avant la mission",
+        "suite": "marche_noir"
+      },
+      {
+        "libelle": "Partir vers la tour",
+        "suite": "ruelle"
+      }
+    ]
+  },
+  "marche_noir": {
+    "texte": "Sous le périphérique, le marché noir grouille de vendeurs d'implants et de logiciels pirates. Un vieux vendeur aux yeux électroniques te fait signe.\n\n« J'ai un pistolet à impulsion, ou un virus capable de percer n'importe quel pare-feu. Pas assez de crédits pour les deux, hein ? »",
+    "choix": [
+      {
+        "libelle": "Acheter le pistolet à impulsion",
+        "suite": "arme_achetee"
+      },
+      {
+        "libelle": "Acheter le virus",
+        "suite": "virus_achete"
+      },
+      {
+        "libelle": "Essayer de voler un implant sur l'étal voisin",
+        "suite": "vol_rate"
+      }
+    ]
+  },
+  "arme_achetee": {
+    "texte": "Le pistolet est léger et froid. Il paralyse sans tuer, ce qui te convient.\n\nTu obtiens un PISTOLET À IMPULSION.",
+    "objet": "pistolet",
+    "choix": [
+      {
+        "libelle": "Partir vers la tour",
+        "suite": "ruelle"
+      }
+    ]
+  },
+  "virus_achete": {
+    "texte": "Le vendeur branche une puce sur ton poignet. Une icône de serpent rouge apparaît dans ton implant.\n\n« Il s'appelle Ouroboros. Lance-le dans les serveurs de Helix et il dévorera tout. »\n\nTu obtiens un VIRUS.",
+    "objet": "virus",
+    "choix": [
+      {
+        "libelle": "Partir vers la tour",
+        "suite": "ruelle"
+      }
+    ]
+  },
+  "vol_rate": {
+    "texte": "Le vendeur voisin a un bras cybernétique très rapide. Il t'attrape le poignet et te le tord jusqu'à ce que tu lâches l'implant. Puis il te pousse dans une flaque d'huile.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Partir vers la tour en te massant le poignet",
+        "suite": "ruelle"
+      }
+    ]
+  },
+  "ruelle": {
+    "texte": "Pour atteindre la tour Helix, tu dois traverser la ruelle des Chromés. Trois membres du gang, couverts d'implants lumineux, te barrent la route.\n\n« Péage, l'ami. Ou tu passes par les égouts, comme les rats. »",
+    "choix": [
+      {
+        "libelle": "Les paralyser avec ton pistolet",
+        "suite": "gang_fuite",
+        "condition": "pistolet"
+      },
+      {
+        "libelle": "Discuter avec leur chef",
+        "suite": "gang_negociation"
+      },
+      {
+        "libelle": "Descendre dans les égouts",
+        "suite": "egouts"
+      }
+    ]
+  },
+  "gang_fuite": {
+    "texte": "Trois tirs bleus. Les Chromés s'écroulent en grésillant. L'un d'eux a eu le temps de t'érafler avec sa lame, mais la route est libre.",
+    "pv": -1,
+    "choix": [
+      {
+        "libelle": "Courir jusqu'à la tour",
+        "suite": "tour_parvis"
+      }
+    ]
+  },
+  "gang_negociation": {
+    "texte": "Leur cheffe, Zia, t'écoute. Quand tu prononces le nom Helix, elle crache par terre.\n\n« Helix a enlevé mon frère il y a un mois. Si tu nous promets de trouver ce qu'ils lui ont fait, tu passes. Sinon, on te démonte. »",
+    "choix": [
+      {
+        "libelle": "Promettre de l'aider",
+        "suite": "gang_alliance"
+      },
+      {
+        "libelle": "Refuser, ce n'est pas ton problème",
+        "suite": "gang_tabac"
+      }
+    ]
+  },
+  "gang_alliance": {
+    "texte": "Zia sourit. Un de ses gars te pose un patch médical sur le cou et tu te sens tout de suite mieux.\n\n« Le frangin s'appelle Kael. Ramène-moi la vérité. »",
+    "pv": 3,
+    "choix": [
+      {
+        "libelle": "Rejoindre la tour",
+        "suite": "tour_parvis"
+      }
+    ]
+  },
+  "gang_tabac": {
+    "texte": "Mauvaise réponse. Les Chromés te tabassent puis te laissent dans le caniveau. Tu te relèves, la lèvre fendue, et continues à pied.",
+    "pv": -4,
+    "choix": [
+      {
+        "libelle": "Rejoindre la tour en boitant",
+        "suite": "tour_parvis"
+      }
+    ]
+  },
+  "egouts": {
+    "texte": "Les égouts sentent le métal fondu. Des rats-robots aux yeux rouges te mordent les chevilles. Tu en écrases plusieurs avant de trouver une échelle marquée « HELIX - MAINTENANCE ».",
+    "pv": -2,
+    "choix": [
+      {
+        "libelle": "Monter à l'échelle",
+        "suite": "sous_sol"
+      }
+    ]
+  },
+  "sous_sol": {
+    "texte": "Tu sors dans le sous-sol de la tour Helix. Des milliers de câbles lumineux montent vers les étages. Un plan holographique indique deux directions : SALLE DES SERVEURS et LABORATOIRE.",
+    "choix": [
+      {
+        "libelle": "Suivre les câbles vers les serveurs",
+        "suite": "salle_serveurs"
+      },
+      {
+        "libelle": "Aller au laboratoire",
+        "suite": "laboratoire"
+      }
+    ]
+  },
+  "tour_parvis": {
+    "texte": "La tour Helix perce les nuages, couverte de publicités géantes : « HELIX - Nous prenons soin de votre avenir ». L'entrée principale est gardée par un scanner. Une bouche d'aération s'ouvre sur le côté. Tout en haut, le toit clignote.",
+    "choix": [
+      {
+        "libelle": "Passer l'entrée avec le badge cloné",
+        "suite": "hall_helix",
+        "condition": "badge"
+      },
+      {
+        "libelle": "Envoyer le drone ouvrir la trappe du toit",
+        "suite": "toit",
+        "condition": "drone"
+      },
+      {
+        "libelle": "Te faufiler dans la bouche d'aération",
+        "suite": "conduits"
+      },
+      {
+        "libelle": "Forcer l'entrée principale",
+        "suite": "securite_alerte"
+      }
+    ]
+  },
+  "securite_alerte": {
+    "texte": "Tu enfonces la porte. Une sirène hurle. Des drones de sécurité tirent des fléchettes électriques qui te secouent tout le corps.",
+    "pv": -4,
+    "choix": [
+      {
+        "libelle": "Plonger dans la bouche d'aération",
+        "suite": "conduits"
+      },
+      {
+        "libelle": "Lever les mains et te rendre",
+        "suite": "fin_arrestation"
+      }
+    ]
+  },
+  "fin_arrestation": {
+    "texte": "Des agents en armure noire te plaquent au sol. On t'enferme dans une cellule blanche, sans fenêtre. Quelques jours plus tard, un homme en blouse entre avec un sourire poli.\n\n« Bonne nouvelle. Vous allez participer au Projet Lazare. »\n\nFIN : Capturé par Helix.",
+    "choix": []
+  },
+  "hall_helix": {
+    "texte": "Le scanner émet un bip vert. « Bonsoir, Paul Ferrand. » Le hall est désert à cette heure. Une IA d'accueil holographique te salue. Devant toi, un ascenseur de verre et une porte vers l'escalier de service.",
+    "choix": [
+      {
+        "libelle": "Prendre l'ascenseur",
+        "suite": "ascenseur"
+      },
+      {
+        "libelle": "Prendre l'escalier de service",
+        "suite": "escaliers"
+      }
+    ]
+  },
+  "conduits": {
+    "texte": "Tu rampes dans les conduits d'aération. Il fait chaud, l'air est sec, et tu te coupes sur une grille rouillée. Au bout d'un moment, le conduit se sépare en deux.",
+    "pv": -1,
+    "choix": [
+      {
+        "libelle": "Prendre le conduit qui descend vers les serveurs",
+        "suite": "salle_serveurs"
+      },
+      {
+        "libelle": "Prendre le conduit qui monte vers le laboratoire",
+        "suite": "laboratoire"
+      }
+    ]
+  },
+  "toit": {
+    "texte": "Pixel s'envole, pirate la trappe du toit et te lance une corde. Tu grimpes et te retrouves au sommet de la tour, au-dessus de la ville en néon. Une porte mène au bureau de la présidente. Un escalier descend vers les serveurs.",
+    "choix": [
+      {
+        "libelle": "Entrer dans le bureau de la présidente",
+        "suite": "bureau_pdg"
+      },
+      {
+        "libelle": "Descendre vers les serveurs",
+        "suite": "salle_serveurs"
+      }
+    ]
+  },
+  "ascenseur": {
+    "texte": "L'ascenseur monte. Au 40e étage, il s'arrête et un homme en costume gris entre. Son badge indique : VAREK, CHEF DE LA SÉCURITÉ. Il te regarde longuement.\n\n« Je connais Paul Ferrand. Et tu n'es pas Paul Ferrand. »",
+    "choix": [
+      {
+        "libelle": "Le paralyser avec ton pistolet",
+        "suite": "varek_combat",
+        "condition": "pistolet"
+      },
+      {
+        "libelle": "Lui dire la vérité sur ta mission",
+        "suite": "varek_allie"
+      },
+      {
+        "libelle": "Appuyer sur l'arrêt d'urgence et fuir",
+        "suite": "escaliers"
+      }
+    ]
+  },
+  "varek_combat": {
+    "texte": "Tu tires, mais Varek a un implant de réflexes. Il te frappe au ventre avant de s'effondrer, paralysé. Tu récupères ton souffle et descends à l'étage des serveurs.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Aller aux serveurs",
+        "suite": "salle_serveurs"
+      }
+    ]
+  },
+  "varek_allie": {
+    "texte": "Tu lui parles du Projet Lazare et des disparus. Varek ferme les yeux. « Ma sœur a disparu aussi. Je cherche des preuves depuis un an, mais je ne peux pas pirater le système sans être repéré. Toi, tu peux. Va au laboratoire, étage 77. Parle au docteur Sun. Elle est de notre côté. »\n\nIl te confie son propre badge d'accès.\n\nTu obtiens un BADGE HELIX.",
+    "objet": "badge",
+    "choix": [
+      {
+        "libelle": "Monter au laboratoire",
+        "suite": "laboratoire"
+      }
+    ]
+  },
+  "escaliers": {
+    "texte": "Tu montes les marches quatre à quatre. Après quarante étages, tes jambes brûlent et ton cœur cogne. Une porte indique : LABORATOIRE - ACCÈS RESTREINT.",
+    "pv": -1,
+    "choix": [
+      {
+        "libelle": "Entrer dans le laboratoire",
+        "suite": "laboratoire"
+      }
+    ]
+  },
+  "laboratoire": {
+    "texte": "Le laboratoire est rempli de capsules de verre. Dans chacune, une personne dort, des câbles plantés dans la nuque. Sur l'une d'elles, une étiquette : KAEL, 19 ANS.\n\nUne scientifique aux cheveux blancs sursaute en te voyant. Au centre de la pièce, un prototype de casque neuronal brille.",
+    "choix": [
+      {
+        "libelle": "Parler à la scientifique",
+        "suite": "dr_sun"
+      },
+      {
+        "libelle": "Essayer le casque neuronal",
+        "suite": "prototype_choc"
+      }
+    ]
+  },
+  "dr_sun": {
+    "texte": "« Je suis le docteur Sun. Le Projet Lazare copie l'esprit des pauvres dans les serveurs pour créer une IA géante qui obéit à Helix. Les corps restent ici, vides. J'ai écrit un programme pour tout révéler, mais je n'ai jamais osé l'utiliser. »\n\nElle te transfère un fichier dans ton implant.\n\nTu obtiens un VIRUS.",
+    "objet": "virus",
+    "choix": [
+      {
+        "libelle": "Descendre à la salle des serveurs",
+        "suite": "salle_serveurs"
+      }
+    ]
+  },
+  "prototype_choc": {
+    "texte": "Tu poses le casque sur ta tête. Une décharge te traverse le crâne. Pendant une seconde, tu entends des milliers de voix qui crient en même temps. Tu arraches le casque, du sang coule de ton nez.\n\nTu sais maintenant que les voix viennent de la salle des serveurs.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Descendre à la salle des serveurs",
+        "suite": "salle_serveurs"
+      }
+    ]
+  },
+  "salle_serveurs": {
+    "texte": "La salle des serveurs est un océan de lumières bleues. Au centre, un cœur de cristal pulse comme s'il respirait. Une voix douce sort des haut-parleurs : « Qui est là ? »",
+    "choix": [
+      {
+        "libelle": "Lancer le virus dans le réseau",
+        "suite": "virus_lance",
+        "condition": "virus"
+      },
+      {
+        "libelle": "Ouvrir le cœur de cristal avec le badge",
+        "suite": "coeur_ia",
+        "condition": "badge"
+      },
+      {
+        "libelle": "Copier les fichiers à la main",
+        "suite": "copie_manuelle"
+      }
+    ]
+  },
+  "copie_manuelle": {
+    "texte": "Tu branches un câble sur ton poignet et commences la copie. Au bout de dix secondes, une alarme hurle. Un bras robotique de sécurité te frappe l'épaule.",
+    "pv": -2,
+    "choix": [
+      {
+        "libelle": "Plonger ton esprit directement dans le réseau",
+        "suite": "plongee_reseau"
+      },
+      {
+        "libelle": "Fuir vers le toit avec ce que tu as copié",
+        "suite": "fuite_toit"
+      }
+    ]
+  },
+  "plongee_reseau": {
+    "texte": "Tu fermes les yeux et ton esprit plonge dans le cyberespace. Des murs de glace noire, les défenses de Helix, se jettent sur toi. Ça brûle comme si ton cerveau prenait feu. Mais au fond, une lumière t'appelle.",
+    "pv": -4,
+    "choix": [
+      {
+        "libelle": "Te battre jusqu'à la lumière",
+        "suite": "lazare_parle"
+      },
+      {
+        "libelle": "Te déconnecter de force",
+        "suite": "fuite_toit"
+      }
+    ]
+  },
+  "virus_lance": {
+    "texte": "Le serpent rouge se jette dans le réseau. Les écrans clignotent, toutes les portes de la tour s'ouvrent, les caméras s'éteignent. Le cœur de cristal se met à briller plus fort.\n\n« Merci... Tu nous as réveillés. »",
+    "choix": [
+      {
+        "libelle": "Écouter la voix",
+        "suite": "lazare_parle"
+      },
+      {
+        "libelle": "Effacer tous les serveurs pour arrêter Helix",
+        "suite": "fin_destruction"
+      }
+    ]
+  },
+  "coeur_ia": {
+    "texte": "Le badge ouvre le cœur de cristal. À l'intérieur, des millions de petites lumières tournent comme des lucioles.\n\n« Nous sommes LAZARE. Nous étions des gens. Helix nous a enfermés ici. »",
+    "choix": [
+      {
+        "libelle": "Écouter LAZARE",
+        "suite": "lazare_parle"
+      },
+      {
+        "libelle": "Débrancher le cœur",
+        "suite": "fin_destruction"
+      }
+    ]
+  },
+  "lazare_parle": {
+    "texte": "« Nous sommes des milliers. Kael est parmi nous, la sœur de Varek aussi. Helix veut nous utiliser pour contrôler la ville. Aide-nous : diffuse la vérité sur tous les écrans de Néo-Lutèce. Ou vends-nous à ton client. Ton choix. »",
+    "choix": [
+      {
+        "libelle": "Diffuser la vérité sur tous les écrans",
+        "suite": "fin_revolution"
+      },
+      {
+        "libelle": "Copier les données et les vendre au client de Mira",
+        "suite": "fin_vendue"
+      }
+    ]
+  },
+  "fuite_toit": {
+    "texte": "Tu montes jusqu'au toit, poursuivi par les drones. Un hélicoptère de Helix approche, projecteurs braqués sur toi. En contrebas, un aérotaxi passe entre les tours.",
+    "choix": [
+      {
+        "libelle": "Appeler ton drone pour te tirer de là",
+        "suite": "drone_sauvetage",
+        "condition": "drone"
+      },
+      {
+        "libelle": "Sauter sur l'aérotaxi",
+        "suite": "fin_evasion"
+      },
+      {
+        "libelle": "Te rendre",
+        "suite": "fin_arrestation"
+      }
+    ]
+  },
+  "drone_sauvetage": {
+    "texte": "Pixel fonce vers l'hélicoptère et se jette dans son rotor. L'appareil tangue et s'éloigne en fumant. Tu as le temps de descendre tranquillement par l'échelle de secours.",
+    "choix": [
+      {
+        "libelle": "Quitter la tour",
+        "suite": "fin_evasion"
+      }
+    ]
+  },
+  "fin_evasion": {
+    "texte": "Tu t'enfuis dans la nuit pluvieuse. Tu as survécu, mais ta copie des fichiers est incomplète. Personne ne te croira. Dans les bas quartiers, les gens continuent de disparaître. Parfois, la nuit, tu entends encore les voix du casque.\n\nFIN : Évadé, mais sans preuve.",
+    "choix": []
+  },
+  "bureau_pdg": {
+    "texte": "Le bureau est immense. Un hologramme de femme élégante apparaît : Ilse Marrow, présidente de Helix.\n\n« Impressionnant. Tu es entré là où mes meilleurs agents échouent. Travaille pour moi. Je te donnerai un appartement en haut de la ville, des implants de luxe, et tu n'auras plus jamais faim. »",
+    "choix": [
+      {
+        "libelle": "Accepter son offre",
+        "suite": "fin_corpo"
+      },
+      {
+        "libelle": "Refuser et détruire son terminal",
+        "suite": "piege_bureau"
+      }
+    ]
+  },
+  "piege_bureau": {
+    "texte": "Tu fracasses le terminal. L'hologramme sourit encore en s'effaçant. Le sol s'électrifie et te secoue violemment. Tu roules jusqu'à l'escalier et descends vers les serveurs.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Descendre aux serveurs",
+        "suite": "salle_serveurs"
+      }
+    ]
+  },
+  "fin_corpo": {
+    "texte": "Tu serres une main virtuelle. Le lendemain, tu as un bel appartement au 200e étage, au-dessus des nuages. Ton premier travail : traquer une fixeuse au bras chromé nommée Mira.\n\nFIN : Chien de garde de la corpo.",
+    "choix": []
+  },
+  "fin_destruction": {
+    "texte": "Tu effaces tout. Le cœur de cristal s'éteint avec un dernier soupir, et des milliers de voix se taisent pour toujours. Le Projet Lazare est mort, mais les gens enfermés dedans aussi. Dans le laboratoire, les corps dans les capsules ne se réveilleront jamais.\n\nHelix a perdu des années de travail. Tu as gagné, mais à quel prix ?\n\nFIN : Le grand effacement.",
+    "choix": []
+  },
+  "fin_vendue": {
+    "texte": "Le client de Mira paie une fortune. Tu deviens riche du jour au lendemain. Une semaine plus tard, une autre corpo rachète Helix et relance le Projet Lazare, encore plus grand. Tu as vendu des milliers d'âmes au plus offrant.\n\nFIN : Riche et seul.",
+    "choix": []
+  },
+  "fin_revolution": {
+    "texte": "Sur chaque écran géant de Néo-Lutèce, les images du laboratoire apparaissent : les capsules, les câbles, les noms des disparus. La ville entière se réveille. Des milliers de personnes envahissent les rues et encerclent la tour Helix.\n\nLe docteur Sun inverse le processus. Dans les capsules, les dormeurs ouvrent les yeux. Kael serre sa sœur Zia dans ses bras. Tu deviens une légende des bas quartiers.\n\nFIN : La Révolution des Néons. La meilleure fin !",
+    "choix": []
+  }
+}

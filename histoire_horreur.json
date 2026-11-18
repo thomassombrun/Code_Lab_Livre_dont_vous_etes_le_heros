@@ -1,0 +1,464 @@
+{
+  "debut": {
+    "texte": "Il est presque minuit. Ta voiture tousse, crachote, puis s'arrête au milieu d'une route de forêt noyée dans le brouillard. Plus de réseau sur ton téléphone. Au loin, entre les arbres, tu aperçois les fenêtres éclairées d'un grand bâtiment.\n\nUne enseigne grince dans le vent : HÔTEL SAINTE-BRUME.",
+    "choix": [
+      {
+        "libelle": "Marcher jusqu'à l'hôtel",
+        "suite": "hotel_entree"
+      },
+      {
+        "libelle": "Fouiller le coffre de la voiture d'abord",
+        "suite": "coffre"
+      },
+      {
+        "libelle": "Rester dans la voiture jusqu'au matin",
+        "suite": "voiture_nuit"
+      }
+    ]
+  },
+  "coffre": {
+    "texte": "Dans le coffre, entre la roue de secours et un vieux parapluie, tu trouves une lampe torche. Les piles ont l'air neuves.\n\nTu obtiens une LAMPE TORCHE.",
+    "objet": "lampe",
+    "choix": [
+      {
+        "libelle": "Marcher jusqu'à l'hôtel",
+        "suite": "hotel_entree"
+      },
+      {
+        "libelle": "Finalement, rester dans la voiture",
+        "suite": "voiture_nuit"
+      }
+    ]
+  },
+  "voiture_nuit": {
+    "texte": "Tu verrouilles les portières. Vers deux heures du matin, un bruit te réveille : quelque chose gratte doucement contre la vitre arrière. Puis contre la vitre de côté. Puis juste à côté de ta tête.",
+    "choix": [
+      {
+        "libelle": "Allumer les phares",
+        "suite": "phares"
+      },
+      {
+        "libelle": "Ne pas bouger et retenir ton souffle",
+        "suite": "voiture_attaque"
+      }
+    ]
+  },
+  "phares": {
+    "texte": "Les phares s'allument. Pendant une seconde, tu vois des silhouettes maigres et grises, beaucoup trop grandes, qui reculent dans la forêt. Puis la batterie meurt et tout redevient noir. Tu sors de la voiture et cours vers les lumières de l'hôtel.",
+    "choix": [
+      {
+        "libelle": "Courir jusqu'à l'hôtel",
+        "suite": "hotel_entree"
+      }
+    ]
+  },
+  "voiture_attaque": {
+    "texte": "Le grattement s'arrête. Le silence dure longtemps. Puis la vitre explose et des doigts froids t'attrapent le bras. Tu hurles, te dégages et sors par l'autre portière. Tu cours vers l'hôtel sans te retourner, le bras griffé.",
+    "pv": -4,
+    "choix": [
+      {
+        "libelle": "Atteindre l'hôtel",
+        "suite": "hotel_entree"
+      }
+    ]
+  },
+  "hotel_entree": {
+    "texte": "Le hall de l'hôtel est éclairé par des lustres poussiéreux. Derrière le comptoir, un homme en costume démodé t'attend, comme s'il savait que tu allais venir. Son badge indique : M. AUBERTIN, CONCIERGE.\n\n« Bienvenue à Sainte-Brume. Votre chambre est prête. La 13, bien sûr. » Son sourire est un peu trop large.",
+    "choix": [
+      {
+        "libelle": "Prendre la clé de la chambre 13",
+        "suite": "chambre_13"
+      },
+      {
+        "libelle": "Demander à utiliser le téléphone",
+        "suite": "telephone"
+      },
+      {
+        "libelle": "Refuser poliment et explorer l'hôtel",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "telephone": {
+    "texte": "Aubertin te montre un vieux téléphone à cadran. Tu composes le numéro des secours. Après un long grésillement, une voix répond. C'est ta propre voix.\n\n« Ne monte pas. Ne t'endors pas. Et surtout, ne lui donne jamais ton nom. »\n\nTu raccroches, glacé. Aubertin sourit toujours.",
+    "pv": -1,
+    "choix": [
+      {
+        "libelle": "Prendre quand même la clé de la chambre 13",
+        "suite": "chambre_13"
+      },
+      {
+        "libelle": "T'éloigner du comptoir et explorer",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "chambre_13": {
+    "texte": "La chambre 13 sent la lavande fanée. Le papier peint a des motifs de fleurs qui ressemblent à des yeux. Il y a un grand miroir, une commode et un lit qui a l'air incroyablement confortable.",
+    "choix": [
+      {
+        "libelle": "Regarder dans le miroir",
+        "suite": "miroir"
+      },
+      {
+        "libelle": "Fouiller le tiroir de la commode",
+        "suite": "tiroir"
+      },
+      {
+        "libelle": "Te coucher et dormir un peu",
+        "suite": "sommeil"
+      }
+    ]
+  },
+  "miroir": {
+    "texte": "Tu regardes ton reflet. Tu lèves la main droite. Ton reflet, lui, ne bouge pas. Il te fixe, puis il sourit, exactement comme Aubertin. Il pose sa main contre la vitre, de l'autre côté, comme pour t'inviter.",
+    "pv": -2,
+    "choix": [
+      {
+        "libelle": "Toucher le miroir",
+        "suite": "fin_miroir"
+      },
+      {
+        "libelle": "Reculer et sortir de la chambre",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "fin_miroir": {
+    "texte": "Tes doigts touchent le verre. Il est tiède, mou comme de l'eau. Une main te tire d'un coup sec. Tu te retrouves de l'autre côté, dans une chambre 13 inversée et silencieuse. Ton reflet, lui, sort de la pièce en sifflotant, avec ton visage.\n\nFIN : Prisonnier du miroir.",
+    "choix": []
+  },
+  "tiroir": {
+    "texte": "Au fond du tiroir, tu trouves un carnet en cuir. Sur la première page : « Journal d'Élise Marchal, 1974. »\n\n« Troisième nuit. L'hôtel est vivant. Il se nourrit des clients. Le sel les fait reculer, la cuisine en est pleine. Le cœur de l'hôtel bat dans la cave. Si je ne m'en sors pas, que quelqu'un dise les mots écrits à la fin de ce carnet... »\n\nTu obtiens le JOURNAL D'ÉLISE.",
+    "objet": "journal",
+    "choix": [
+      {
+        "libelle": "Sortir de la chambre avec le journal",
+        "suite": "couloir"
+      },
+      {
+        "libelle": "Te reposer un moment sur le lit",
+        "suite": "sommeil"
+      }
+    ]
+  },
+  "sommeil": {
+    "texte": "Tu fermes les yeux une minute. Tu rêves que des racines sortent du matelas et s'enroulent autour de toi. Tu te réveilles en sursaut, couvert de griffures. Le réveil indique 3 h 33. Les draps sont tachés de sang.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Fuir la chambre",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "couloir": {
+    "texte": "Le couloir de l'hôtel semble beaucoup plus long que le bâtiment. Le papier peint se soulève doucement, comme s'il respirait. Des panneaux indiquent la cuisine, le grenier et la cave. Derrière la porte de la chambre 7, un enfant fredonne une comptine.",
+    "choix": [
+      {
+        "libelle": "Aller à la cuisine",
+        "suite": "cuisine"
+      },
+      {
+        "libelle": "Frapper à la chambre 7",
+        "suite": "chambre_7"
+      },
+      {
+        "libelle": "Monter au grenier",
+        "suite": "grenier"
+      },
+      {
+        "libelle": "Descendre vers la cave",
+        "suite": "cave_porte"
+      },
+      {
+        "libelle": "Retourner au hall et tenter de fuir",
+        "suite": "hall_final"
+      }
+    ]
+  },
+  "cuisine": {
+    "texte": "La cuisine est immense et brûlante. Un cuisinier te tourne le dos et remue une marmite en fredonnant. Sur une étagère, il y a un gros sac de sel. Une odeur délicieuse sort de la soupe.",
+    "choix": [
+      {
+        "libelle": "Prendre discrètement le sac de sel",
+        "suite": "sel_pris"
+      },
+      {
+        "libelle": "Goûter la soupe",
+        "suite": "soupe"
+      },
+      {
+        "libelle": "Ressortir sans faire de bruit",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "sel_pris": {
+    "texte": "Tu attrapes le sac de sel. Le cuisinier se retourne. Il n'a pas de visage, juste une peau lisse et blanche. Il se jette sur toi, mais quand quelques grains de sel tombent sur sa main, elle fume et il recule en hurlant sans bouche. Tu t'enfuis, l'avant-bras brûlé par la vapeur.\n\nTu obtiens un SAC DE SEL.",
+    "pv": -1,
+    "objet": "sel",
+    "choix": [
+      {
+        "libelle": "Retourner dans le couloir",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "soupe": {
+    "texte": "Tu prends une cuillère. Le goût est délicieux, puis amer. Ton ventre se tord. Tu vois des choses bouger au fond de ton bol. Tu recraches tout et sors en titubant.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Retourner dans le couloir",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "chambre_7": {
+    "texte": "La porte s'ouvre toute seule. Une petite fille en robe blanche est assise sur le lit. Tu vois le mur à travers elle.\n\n« Je m'appelle Lison. Monsieur Aubertin a caché ma poupée au grenier. Si tu me la rapportes, je t'aiderai à sortir. Promis. »",
+    "choix": [
+      {
+        "libelle": "Promettre de retrouver sa poupée",
+        "suite": "grenier"
+      },
+      {
+        "libelle": "Refuser et refermer la porte",
+        "suite": "lison_triste"
+      }
+    ]
+  },
+  "lison_triste": {
+    "texte": "Le visage de Lison se déforme. Elle pousse un cri si aigu que les vitres se fendent et que tes oreilles saignent. La porte claque. Le couloir redevient silencieux.",
+    "pv": -2,
+    "choix": [
+      {
+        "libelle": "T'éloigner",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "grenier": {
+    "texte": "L'escalier du grenier grince à chaque marche. En haut, il fait complètement noir. Tu entends un bruit de respiration lente dans le fond. Une lucarne laisse passer un peu de brouillard.",
+    "choix": [
+      {
+        "libelle": "Allumer ta lampe torche",
+        "suite": "grenier_eclaire",
+        "condition": "lampe"
+      },
+      {
+        "libelle": "Avancer à tâtons dans le noir",
+        "suite": "grenier_noir"
+      },
+      {
+        "libelle": "Sauter par la lucarne pour t'enfuir",
+        "suite": "fin_chute"
+      }
+    ]
+  },
+  "fin_chute": {
+    "texte": "Tu ouvres la lucarne et sautes. Le brouillard est épais, tu ne vois pas le sol. Tu tombes. Et tu tombes encore. Le sol ne vient jamais. Quelque part au-dessus de toi, Aubertin referme la lucarne en soupirant.\n\nFIN : La chute sans fin.",
+    "choix": []
+  },
+  "grenier_noir": {
+    "texte": "Tu avances, les mains devant toi. Quelque chose de froid et de mouillé te touche la joue. Tu trébuches sur une malle et tu te tords la cheville. En tâtonnant par terre, tu sens enfin un petit corps en tissu.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Ramasser l'objet et redescendre vite",
+        "suite": "poupee"
+      }
+    ]
+  },
+  "grenier_eclaire": {
+    "texte": "Le faisceau de ta lampe révèle des dizaines de valises, toutes étiquetées avec des noms et des dates, de 1920 à aujourd'hui. Ce sont les bagages des clients disparus. Sur une malle, une poupée de porcelaine est assise. À côté, une vieille clé rouillée est accrochée à un clou, avec l'étiquette : CAVE.\n\nTu obtiens une CLÉ ROUILLÉE.",
+    "objet": "cle_rouillee",
+    "choix": [
+      {
+        "libelle": "Prendre la poupée",
+        "suite": "poupee"
+      }
+    ]
+  },
+  "poupee": {
+    "texte": "Tu tiens la poupée de Lison. Ses yeux de verre semblent te regarder. Elle est étrangement chaude.\n\nTu obtiens la POUPÉE DE LISON.",
+    "objet": "poupee",
+    "choix": [
+      {
+        "libelle": "Rapporter la poupée à Lison",
+        "suite": "lison_paix"
+      },
+      {
+        "libelle": "Garder la poupée et retourner dans le couloir",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "lison_paix": {
+    "texte": "Lison serre sa poupée contre elle et sourit. Pour la première fois, elle a l'air d'une vraie petite fille.\n\n« Merci. Prends mon médaillon. Quand tu voudras partir, appelle-moi et j'ouvrirai la porte. Et méfie-toi : la cave, c'est là qu'il bat. »\n\nUne douce chaleur referme tes blessures.\n\nTu obtiens le MÉDAILLON DE LISON.",
+    "pv": 4,
+    "objet": "medaillon",
+    "choix": [
+      {
+        "libelle": "Retourner dans le couloir",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "cave_porte": {
+    "texte": "L'escalier de la cave descend dans une odeur de terre humide. La porte du bas est en bois épais, fermée à clé. Derrière, tu entends un battement sourd. Boum. Boum. Comme un cœur énorme.",
+    "choix": [
+      {
+        "libelle": "Ouvrir avec la clé rouillée",
+        "suite": "cave",
+        "condition": "cle_rouillee"
+      },
+      {
+        "libelle": "Enfoncer la porte à coups d'épaule",
+        "suite": "cave_bruit"
+      },
+      {
+        "libelle": "Remonter dans le couloir",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "cave_bruit": {
+    "texte": "Tu frappes la porte de toutes tes forces. Au troisième coup, elle cède, mais ton épaule craque. Le battement s'arrête une seconde, comme si quelque chose t'avait entendu.",
+    "pv": -2,
+    "choix": [
+      {
+        "libelle": "Entrer dans la cave",
+        "suite": "cave"
+      }
+    ]
+  },
+  "cave": {
+    "texte": "La cave est envahie de racines noires qui couvrent les murs. Au centre, une masse rouge et vivante pulse lentement : le cœur de l'hôtel. Au fond, une vieille chaudière ronfle.\n\nAubertin apparaît derrière toi, sans bruit. « Personne ne quitte Sainte-Brume. Dites-moi votre nom, et vous resterez pour toujours. »",
+    "choix": [
+      {
+        "libelle": "Tracer un cercle de sel autour de toi",
+        "suite": "cercle_sel",
+        "condition": "sel"
+      },
+      {
+        "libelle": "Lire les mots à la fin du journal d'Élise",
+        "suite": "rituel",
+        "condition": "journal"
+      },
+      {
+        "libelle": "Ouvrir la chaudière pour mettre le feu au cœur",
+        "suite": "chaudiere"
+      },
+      {
+        "libelle": "T'enfuir par l'escalier",
+        "suite": "fuite_cave"
+      }
+    ]
+  },
+  "cercle_sel": {
+    "texte": "Tu verses le sel en cercle autour de tes pieds. Aubertin s'arrête net, comme devant un mur invisible. Les racines qui rampaient vers toi se tordent et reculent. Le cœur pulse plus vite. Il a peur.",
+    "choix": [
+      {
+        "libelle": "Jeter le reste du sel sur le cœur",
+        "suite": "fin_aube"
+      },
+      {
+        "libelle": "Profiter de la pause pour ouvrir la chaudière",
+        "suite": "chaudiere"
+      }
+    ]
+  },
+  "rituel": {
+    "texte": "Tu ouvres le journal à la dernière page et lis à voix haute : « Hôtel, je te rends ton nom véritable. » Aubertin se fige. Le cœur cesse de battre. Une voix sort des murs : « Quel nom ? Quel nom ? »\n\nTu te souviens du téléphone : ne jamais donner ton nom.",
+    "choix": [
+      {
+        "libelle": "Répondre : « Élise Marchal »",
+        "suite": "fin_elise"
+      },
+      {
+        "libelle": "Répondre avec ton propre nom",
+        "suite": "fin_proprietaire"
+      }
+    ]
+  },
+  "chaudiere": {
+    "texte": "Tu ouvres la porte de la chaudière et arraches une planche enflammée. Tu la jettes sur le cœur. Il hurle avec toutes les voix des clients disparus. Les racines prennent feu une à une. Une flamme te lèche le bras.",
+    "pv": -3,
+    "choix": [
+      {
+        "libelle": "Courir vers la sortie",
+        "suite": "fin_incendie"
+      },
+      {
+        "libelle": "Rester pour être sûr que tout brûle",
+        "suite": "fin_sacrifice"
+      }
+    ]
+  },
+  "fuite_cave": {
+    "texte": "Tu remontes l'escalier quatre à quatre. Des racines attrapent tes chevilles et t'écorchent jusqu'au sang. Tu arrives dans le hall, à bout de souffle.",
+    "pv": -4,
+    "choix": [
+      {
+        "libelle": "Te précipiter vers la porte d'entrée",
+        "suite": "hall_final"
+      }
+    ]
+  },
+  "hall_final": {
+    "texte": "Le hall est vide. La porte d'entrée est là, à quelques mètres, mais la poignée a disparu. Dans le reflet des vitres, tu vois Aubertin derrière toi, qui sourit.",
+    "choix": [
+      {
+        "libelle": "Appeler Lison avec son médaillon",
+        "suite": "lison_aide",
+        "condition": "medaillon"
+      },
+      {
+        "libelle": "Forcer la porte à mains nues",
+        "suite": "fin_hotel"
+      },
+      {
+        "libelle": "Retourner dans le couloir",
+        "suite": "couloir"
+      }
+    ]
+  },
+  "lison_aide": {
+    "texte": "Tu serres le médaillon et murmures le nom de Lison. Un vent froid traverse le hall. La petite fille apparaît entre toi et Aubertin, sa poupée dans les bras.\n\n« Laisse-le partir. » Aubertin recule, pour la première fois effrayé. La porte s'ouvre en grand sur le brouillard.",
+    "choix": [
+      {
+        "libelle": "Sortir avec Lison",
+        "suite": "fin_lison"
+      }
+    ]
+  },
+  "fin_hotel": {
+    "texte": "Tu griffes la porte jusqu'à te casser les ongles. Aubertin pose une main froide sur ton épaule. « Allons, allons. La chambre 13 vous attend. Elle vous attendra toujours. »\n\nLe lendemain, une nouvelle valise apparaît au grenier, avec ton nom sur l'étiquette.\n\nFIN : Client pour l'éternité.",
+    "choix": []
+  },
+  "fin_proprietaire": {
+    "texte": "Tu dis ton nom. Le cœur se remet à battre, très fort, en même temps que le tien. Aubertin s'incline et pose sa casquette sur ta tête.\n\n« Merci. Après cent ans, je peux enfin me reposer. » Il tombe en poussière.\n\nDes années plus tard, une voiture tombe en panne sur la route de la forêt. Tu attends son conducteur derrière le comptoir, avec un sourire un peu trop large.\n\nFIN : Le nouveau concierge.",
+    "choix": []
+  },
+  "fin_elise": {
+    "texte": "« Élise Marchal ! » L'hôtel pousse un long soupir. Une jeune femme en vêtements des années 70 apparaît près du cœur, souriante. « Enfin libre. » Elle pose la main sur le cœur et il se change en cendres.\n\nLes murs s'effritent. Des dizaines de silhouettes lumineuses, tous les clients disparus, s'élèvent dans le brouillard. Au matin, il ne reste qu'une ruine envahie par les ronces, et toi, assis devant, le journal d'Élise sur les genoux.\n\nFIN : Les âmes libérées. La meilleure fin !",
+    "choix": []
+  },
+  "fin_aube": {
+    "texte": "Tu lances le sel sur le cœur. Il se met à fumer, à grésiller, puis se dessèche comme une vieille pomme. Aubertin hurle et se disloque en feuilles mortes. Tout l'hôtel tremble.\n\nTu remontes en courant et sors juste avant que le toit ne s'effondre. Le soleil se lève sur la forêt. Le brouillard a disparu.\n\nFIN : L'aube à Sainte-Brume. Tu as vaincu l'hôtel !",
+    "choix": []
+  },
+  "fin_incendie": {
+    "texte": "Tu remontes à travers la fumée et jaillis dehors au moment où l'hôtel s'embrase. Tu restes là, à genoux dans l'herbe mouillée, à regarder Sainte-Brume brûler jusqu'au matin.\n\nLes pompiers ne trouveront jamais trace d'un hôtel sur leurs cartes. Toi, tu garderas une cicatrice en forme de racine sur le bras.\n\nFIN : Survivant des flammes.",
+    "choix": []
+  },
+  "fin_sacrifice": {
+    "texte": "Tu restes devant le cœur qui brûle, pour être sûr qu'il ne repousse jamais. Le plafond s'effondre autour de toi. Dans les flammes, tu vois les clients disparus te sourire et s'envoler.\n\nPersonne ne saura ce que tu as fait. Mais plus aucune voiture ne tombera en panne sur cette route.\n\nFIN : Le sacrifice.",
+    "choix": []
+  },
+  "fin_lison": {
+    "texte": "Tu sors dans l'aube grise, la main glacée de Lison dans la tienne. Au bout de l'allée, elle s'arrête.\n\n« Moi, je ne peux pas aller plus loin. Mais maintenant, j'ai ma poupée. » Elle s'efface doucement en souriant. Derrière toi, l'hôtel est toujours là, et il attend le prochain voyageur...\n\nFIN : Sauvé par Lison. Tu t'en sors, mais l'hôtel vit encore.",
+    "choix": []
+  }
+}

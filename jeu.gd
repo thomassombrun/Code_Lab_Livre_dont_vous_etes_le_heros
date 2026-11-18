@@ -4,7 +4,12 @@ extends Control
 @onready var texte = $VBoxContainer/Texte
 @onready var boite_choix = $VBoxContainer/Choix
 
-const FICHIER_HISTOIRE = "res://histoire.json"
+const THEMES = {
+	"Médiéval": "res://histoire_medieval.json",
+	"Cyberpunk": "res://histoire_cyberpunk.json",
+	"Horreur": "res://histoire_horreur.json",
+}
+
 const DEPART = "debut"
 const PV_MAX = 10
 
@@ -14,9 +19,20 @@ var pv = PV_MAX
 var inventaire = []
 
 func _ready():
-	histoire = charger_histoire(FICHIER_HISTOIRE)
+	afficher_menu()
+
+func afficher_menu():
+	statut.text = ""
+	texte.text = "Choisis ton aventure :"
+	for bouton in boite_choix.get_children():
+		bouton.queue_free()
+	for nom in THEMES:
+		ajouter_bouton(nom, lancer_theme.bind(THEMES[nom]))
+
+func lancer_theme(chemin):
+	histoire = charger_histoire(chemin)
 	if histoire.is_empty():
-		texte.text = "Erreur : impossible de charger l'histoire."
+		texte.text = "Erreur : impossible de charger " + chemin
 		return
 	verifier_histoire()
 	nouvelle_partie()
@@ -66,10 +82,12 @@ func afficher():
 	if pv <= 0:
 		texte.text += "\n\nTu n'as plus de forces... FIN (mauvaise)"
 		ajouter_bouton("Rejouer", nouvelle_partie)
+		ajouter_bouton("Changer de thème", afficher_menu)
 		return
 
 	if p["choix"].is_empty():
 		ajouter_bouton("Rejouer", nouvelle_partie)
+		ajouter_bouton("Changer de thème", afficher_menu)
 		return
 
 	for c in p["choix"]:
